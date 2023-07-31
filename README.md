@@ -31,4 +31,5 @@ There's also a gemfile if you'd prefer that
 ## Caveats
 
 - can't push boxes in a row yet
+- can't push boxes that are in storage
 - no graphics

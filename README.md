@@ -17,8 +17,9 @@ after that, if you have already installed gosu
 Don't have gosu have installed?, easy as
 `$ gem install gosu`
 
-There's also a gemfile if you'd prefer
-`$ bundle install`
+There's also a gemfile if you'd prefer that
+
+`$ bundle install` &
 `$ bundle exec ruby main.rb`
 
 ## Features

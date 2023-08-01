@@ -76,6 +76,7 @@ class SokoRuby < Gosu::Window
         when 1 # Wall
           Wall.new
         when 2 # Box
+          @boxes = []
           @boxes << Box.new
 
           # The last one is the one we pushed

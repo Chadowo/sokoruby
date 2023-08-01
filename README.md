@@ -14,6 +14,7 @@ Download a zip of the source code here or clone it
 
 after that, if you have already installed gosu
 `$ ruby main.rb`
+
 Don't have gosu have installed?, easy as
 `$ gem install gosu`
 
@@ -24,9 +25,9 @@ There's also a gemfile if you'd prefer that
 
 ## Features
 
-- Can move
-- Can push boxes
-- Can win
+- can move
+- can push boxes
+- can win
 
 ## Caveats
 

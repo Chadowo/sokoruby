@@ -132,17 +132,37 @@ class SokoRuby < Gosu::Window
         when Empty
           # Nothing
         when Wall
-          Gosu.draw_rect(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT, Gosu::Color::BLUE)
+          Gosu.draw_rect(x * TILE_WIDTH,
+                         y * TILE_HEIGHT,
+                         TILE_WIDTH,
+                         TILE_HEIGHT,
+                         Gosu::Color::BLUE)
         when Box
           if cell.is_on_storage
-            Gosu.draw_rect(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT, Gosu::Color::GREEN)
+            Gosu.draw_rect(x * TILE_WIDTH,
+                           y * TILE_HEIGHT,
+                           TILE_WIDTH,
+                           TILE_HEIGHT,
+                           Gosu::Color::GREEN)
           else
-            Gosu.draw_rect(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT, Gosu::Color::YELLOW)
+            Gosu.draw_rect(x * TILE_WIDTH,
+                           y * TILE_HEIGHT,
+                           TILE_WIDTH,
+                           TILE_HEIGHT,
+                           Gosu::Color::YELLOW)
           end
         when Storage
-          Gosu.draw_rect(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT, Gosu::Color::RED)
+          Gosu.draw_rect(x * TILE_WIDTH,
+                         y * TILE_HEIGHT,
+                         TILE_WIDTH,
+                         TILE_HEIGHT,
+                         Gosu::Color::RED)
         when Pusher
-          Gosu.draw_rect(x * TILE_WIDTH, y * TILE_HEIGHT, TILE_WIDTH, TILE_HEIGHT, Gosu::Color::WHITE)
+          Gosu.draw_rect(x * TILE_WIDTH,
+                         y * TILE_HEIGHT,
+                         TILE_WIDTH,
+                         TILE_HEIGHT,
+                         Gosu::Color::WHITE)
         end
       end
     end

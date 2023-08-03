@@ -32,9 +32,12 @@ class Pusher
     end
   end
 
-  def move(dx,  dy)
+  def move(dx, dy)
     # Our coordinates
     x, y = find_position
+
+    return if x.nil? # If the player moves at the same time the level is reset
+                     # then it'll return nil, we can
 
     destiny = @gamemap[y + dy][x + dx]
 
@@ -50,7 +53,7 @@ class Pusher
 
       @gamemap[y + dy][x + dx] = self
     when Wall # Impassable
-      return nil
+      return
     when Box # Push
       box = @gamemap[y + dy][x + dx]
 
@@ -84,15 +87,15 @@ class Pusher
     # Move acccordingly to destiny
     case box_destiny
     when Empty
-      return nil if box.is_on_storage
+      return if box.is_on_storage
 
       @gamemap[y + (dy * 2)][x + (dx * 2)] = box
     when Wall
-      return nil
+      return
 
     when Storage
       # There could be multiple storages in a row
-      return nil if box.is_on_storage
+      return if box.is_on_storage
 
       box.is_on_storage = true
 
@@ -109,6 +112,12 @@ class Pusher
           return [x, y]
         end
       end
+    end
+  rescue NoMethodError
+    if @gamemap.nil? # The player tried to move before the level has reset
+      return
+    else # Something else has happened
+      raise 
     end
   end
 end

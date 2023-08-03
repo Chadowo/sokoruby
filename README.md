@@ -9,6 +9,7 @@ create your own.
 
 ## Play
 
+### Get It
 Download a zip of the source code here or clone it
 `$ git clone https://github.com/Chadowo/sokoruby.git`
 
@@ -22,6 +23,14 @@ There's also a gemfile if you'd prefer that
 
 `$ bundle install` &
 `$ bundle exec ruby main.rb`
+
+### Controls
+
+<kbd>WASD</kbd> - Move yourself
+
+<kbd>R</kbd> - Reset the level
+
+<kbd>Escape</kbd> - Close the game
 
 ## Features
 

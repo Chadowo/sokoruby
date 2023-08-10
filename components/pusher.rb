@@ -21,13 +21,13 @@ class Pusher
 
   def button_down?(id)
     case id
-    when Gosu::KB_W # Up
+    when Gosu::KB_W, Gosu::KB_UP # Up
       move(0, -1)
-    when Gosu::KB_S # Down
+    when Gosu::KB_S, Gosu::KB_DOWN # Down
       move(0, 1)
-    when Gosu::KB_A # Left
+    when Gosu::KB_A, Gosu::KB_LEFT # Left
       move(-1, 0) 
-    when Gosu::KB_D # Right
+    when Gosu::KB_D, Gosu::KB_RIGHT # Right
       move(1, 0)
     end
   end

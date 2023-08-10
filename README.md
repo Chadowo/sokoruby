@@ -23,7 +23,7 @@ or if you installed gosu with bundler
 
 ### Controls
 
-<kbd>WASD</kbd> - Move yourself
+<kbd>WASD</kbd> or <kbd>↑←↓→</kbd> - Move yourself
 
 <kbd>R</kbd> - Reset the level
 

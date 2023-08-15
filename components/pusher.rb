@@ -5,12 +5,16 @@ require_relative 'storage'
 require_relative 'empty'
 
 # The entity whose player controls, can push boxes and move around the level
-class Pusher 
+class Pusher
+  attr_reader :steps
+
   def initialize
     @gamemap = nil
 
+    @steps = 0
+
     # We can walk throught special tiles like the storage one, however they
-    # don't just disappear after the fact
+    # don't just disappear after the fact, so we save it here
     @on_tile = nil
   end
 
@@ -21,13 +25,13 @@ class Pusher
 
   def button_down?(id)
     case id
-    when Gosu::KB_W, Gosu::KB_UP # Up
+    when Gosu::KB_W, Gosu::KB_UP
       move(0, -1)
-    when Gosu::KB_S, Gosu::KB_DOWN # Down
+    when Gosu::KB_S, Gosu::KB_DOWN
       move(0, 1)
-    when Gosu::KB_A, Gosu::KB_LEFT # Left
-      move(-1, 0) 
-    when Gosu::KB_D, Gosu::KB_RIGHT # Right
+    when Gosu::KB_A, Gosu::KB_LEFT
+      move(-1, 0)
+    when Gosu::KB_D, Gosu::KB_RIGHT
       move(1, 0)
     end
   end
@@ -52,6 +56,8 @@ class Pusher
       end
 
       @gamemap[y + dy][x + dx] = self
+
+      @steps += 1
     when Wall # Impassable
       return
     when Box # Push
@@ -67,15 +73,16 @@ class Pusher
           @gamemap[y][x] = Empty.new
         end
 
-        # Move
         @gamemap[y + dy][x + dx] = self
+        @steps += 1
       end
     when Storage # Passable, however it is not empty
-      @on_tile = destiny # Save the storage
+      @on_tile = destiny # Save the storage tile
 
       @gamemap[y][x] = Empty.new
 
       @gamemap[y + dy][x + dx] = self
+      @steps += 1
     end
   end
 
@@ -117,7 +124,7 @@ class Pusher
     if @gamemap.nil? # The player tried to move before the level has reset
       return
     else # Something else has happened
-      raise 
+      raise
     end
   end
 end

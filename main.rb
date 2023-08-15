@@ -6,6 +6,8 @@ require_relative 'components/box'
 require_relative 'components/storage'
 require_relative 'components/wall'
 
+require_relative 'components/level'
+
 # Main window of our sokoban game
 class SokoRuby < Gosu::Window
   WINDOW_WIDTH = 800
@@ -17,7 +19,6 @@ class SokoRuby < Gosu::Window
 
   def initialize
     super(WINDOW_WIDTH, WINDOW_HEIGHT, false)
-
     self.caption = 'SokoGosu'
 
     @gameover = false
@@ -40,7 +41,8 @@ class SokoRuby < Gosu::Window
     #   3 = Storage
     #   4 = Pusher
     #
-    @level1 = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    @level1 = Level.new(
+              [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -60,73 +62,55 @@ class SokoRuby < Gosu::Window
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
                [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+             )
 
     # The current level being played
-    @gamelevel = populate_level(@level1)
-  end
+    @current_level = @level1
 
-  # Returns a copy of level where the boring numbers are replaced with 
-  # fully-fledged game objects
-  def populate_level(level)
-    level.map do |row|
-      row.map do |cell|
-        case cell
-        when 0
-          Empty.new
-        when 1
-          Wall.new
-        when 2
-          @boxes << Box.new
-
-          # Grab the box we pushed
-          @boxes.last
-        when 3
-          Storage.new
-        when 4
-          @player = Pusher.new
-        else
-          cell
-        end
-      end
-    end
+    @game_map = @current_level.populate
   end
 
   # Reset the game to the start
-  def reset(level)
-    @boxes = []
-    @gamelevel = populate_level(level)
-    @gameover = false    
+  def reset
+    @current_level.reset
+    @game_map = @current_level.populate
+
+    @gameover = false
   end
 
   # Main update
   def update
     # The player needs to have the game level for movement
-    @player.update_map(@gamelevel)
+    @current_level.player.update_map(@game_map)
 
     # Check for game-winning condition
-    @gameover = true if @boxes.all?(&:is_on_storage)
+    @gameover = true if @current_level.finished?
 
     # Keyboard actions
-    reset(@level1) if button_down?(Gosu::KB_R)
+    reset if button_down?(Gosu::KB_R)
 
     close if button_down?(Gosu::KB_ESCAPE)
   end
 
   def button_down(id)
     # Player input is done here
-    @player.button_down?(id) unless @gameover
+    @current_level.player.button_down?(id) unless @gameover
   end
 
   def draw
-    draw_level(@gamelevel)
-    @font.draw_text('R to restart', 5, 0, 0)
-
+    draw_level
+    draw_hud
     draw_gameover if @gameover
   end
 
+  def draw_hud
+    @font.draw_text('R to restart', 5, 0, 0)
+    @font.draw_text("Steps: #{@current_level.player.steps}", 5, 605, 0)
+  end
+
   # Iterate throught the level and draw each piece
-  def draw_level(level)
-    level.each_with_index do |row, y|
+  def draw_level
+    @game_map.each_with_index do |row, y|
       row.each_with_index do |cell, x|
         case cell
         when Empty

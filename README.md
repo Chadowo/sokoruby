@@ -23,6 +23,10 @@ or if you installed gosu with bundler
 
 ### Controls
 
+Your objective is for all the boxes (yellow squares) to be on a storage (red squares),
+avoid being in a position where you can't move a box and try to solve the level with
+the least steps possibles!
+
 <kbd>WASD</kbd> or <kbd>↑←↓→</kbd> - Move yourself
 
 <kbd>R</kbd> - Reset the level

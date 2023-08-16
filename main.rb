@@ -4,6 +4,7 @@ require 'gosu'
 require_relative 'components/pusher'
 require_relative 'components/box'
 require_relative 'components/storage'
+require_relative 'components/empty'
 require_relative 'components/wall'
 
 require_relative 'components/level'

@@ -24,12 +24,6 @@ class SokoRuby < Gosu::Window
 
     @gameover = false
 
-    # For now, we only support one pusher per level
-    @player = nil
-
-    # So we can easily check if the game is over
-    @boxes = []
-
     # To draw information on the screen
     @font = Gosu::Font.new(32)
 

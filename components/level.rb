@@ -40,7 +40,7 @@ class Level
     end
   end
 
-  # Set the level to its initial condition
+  # Set the level to it's initial condition
   def reset
     @boxes = []
   end

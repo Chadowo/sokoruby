@@ -83,7 +83,6 @@ class SokoRuby < Gosu::Window
 
     # Keyboard actions
     reset if button_down?(Gosu::KB_R)
-
     close if button_down?(Gosu::KB_ESCAPE)
   end
 

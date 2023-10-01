@@ -18,7 +18,7 @@ You'll need gosu to run the game, either install it with gem:
 gem install gosu
 ```
 
-or use Bundler
+or use Bundler:
 
 ```console
 bundle install

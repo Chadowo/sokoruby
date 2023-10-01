@@ -8,15 +8,21 @@ Sokoban clone made in [Ruby](https://www.ruby-lang.org) with [Gosu](https://www.
 
 Download a zip of the source code here or clone it
 
-`$ git clone https://github.com/Chadowo/sokoruby.git`
+```console
+git clone https://github.com/Chadowo/sokoruby.git
+```
 
 You'll need gosu to run the game, either install it with gem:
 
-`$ gem install gosu`
+```console
+gem install gosu
+```
 
 or use Bundler
 
-`$ bundle install`
+```console
+bundle install
+```
 
 after that to run the game just run the `main.rb` file (if you used bundler to install gosu, then the command
 is slightly different, put `bundle exec` before `ruby`)

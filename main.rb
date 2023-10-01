@@ -107,8 +107,6 @@ class SokoRuby < Gosu::Window
     @game_map.each_with_index do |row, y|
       row.each_with_index do |cell, x|
         case cell
-        when Empty
-          # Nothing
         when Wall
           Gosu.draw_rect(x * TILE_WIDTH,
                          y * TILE_HEIGHT,

@@ -115,9 +115,7 @@ class Pusher
     # Iterate throught the map finding our x and y relative to it
     @gamemap.each_with_index do |row, y|
       row.each_with_index do |cell, x|
-        if cell.is_a? Pusher
-          return [x, y]
-        end
+        return [x, y] if cell.is_a? Pusher
       end
     end
   rescue NoMethodError

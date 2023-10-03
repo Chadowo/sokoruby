@@ -41,7 +41,7 @@ class Pusher
     x, y = find_position
 
     return if x.nil? # If the player moves at the same time the level is reset
-                     # then it'll return nil, we can
+                     # find_position will return nil
 
     destiny = @gamemap[y + dy][x + dx]
 

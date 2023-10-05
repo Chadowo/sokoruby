@@ -97,9 +97,6 @@ class Pusher
       return if box.is_on_storage
 
       @gamemap[y + (dy * 2)][x + (dx * 2)] = box
-    when Wall
-      return
-
     when Storage
       # There could be multiple storages in a row
       return if box.is_on_storage

@@ -6,7 +6,7 @@ Sokoban clone made in [Ruby](https://www.ruby-lang.org) with [Gosu](https://www.
 
 ### Get It
 
-Download a zip of the source code here or clone it
+Download a zip of the source code here or clone it:
 
 ```console
 git clone https://github.com/Chadowo/sokoruby.git
@@ -58,4 +58,4 @@ create your own clone or learn a bit from it.
 
 ## License
 
-This game is licensed under the [MIT](LICENSE) license
+This game is licensed under the [MIT](LICENSE) license.

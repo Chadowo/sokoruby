@@ -1,6 +1,6 @@
 # SokoRuby
 
-Sokoban clone made in [Ruby](https://www.ruby-lang.org) with [Gosu](https://www.libgosu.org/)
+Sokoban clone made in [Ruby](https://www.ruby-lang.org) with [Gosu](https://www.libgosu.org/).
 
 ## Play
 
@@ -25,7 +25,7 @@ bundle install
 ```
 
 after that to run the game just run the `main.rb` file (if you used bundler to install gosu, then the command
-is slightly different, put `bundle exec` before `ruby`)
+is slightly different, put `bundle exec` before `ruby`).
 
 ### Controls
 

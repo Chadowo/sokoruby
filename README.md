@@ -58,4 +58,4 @@ create your own clone or learn a bit from it.
 
 ## License
 
-This game is licensed under the [MIT](LICENSE) license.
+This game is licensed under the [MIT License](LICENSE).

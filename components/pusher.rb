@@ -1,4 +1,3 @@
-
 require_relative 'box'
 require_relative 'storage'
 require_relative 'empty'

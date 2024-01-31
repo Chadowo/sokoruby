@@ -1,4 +1,3 @@
-
 require_relative 'pusher'
 require_relative 'box'
 require_relative 'storage'

@@ -19,8 +19,8 @@ class SokoRuby < Gosu::Window
   TILE_HEIGHT = 32
 
   def initialize
-    super(WINDOW_WIDTH, WINDOW_HEIGHT, false)
-    self.caption = 'SokoGosu'
+    super(WINDOW_WIDTH, WINDOW_HEIGHT, resizable: false)
+    self.caption = 'SokoRuby'
 
     @gameover = false
 

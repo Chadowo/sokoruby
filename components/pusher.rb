@@ -1,8 +1,3 @@
-require_relative 'box'
-require_relative 'storage'
-require_relative 'empty'
-require_relative 'wall'
-
 # The entity whose player controls, can push boxes and move around the level
 class Pusher
   attr_reader :steps

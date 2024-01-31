@@ -1,9 +1,3 @@
-require_relative 'pusher'
-require_relative 'box'
-require_relative 'storage'
-require_relative 'empty'
-require_relative 'wall'
-
 class Level
   attr_reader :map, :player
 
